@@ -1,0 +1,79 @@
+this.iceCreams = [
+  {
+    "popularity": 6.8,
+    "description": "Inghetata cu cacao si inghetata cu aroma de vanilie",
+    "id": "NapocaPanda",
+    "img": "/img/Panda.png",
+    "name": "Napoca Panda"
+  },
+  {
+    "alcohol": 6.8,
+    "description": "Inghetata cu cacao si cu aroma de vanilie, cu glazura cu cacao si alune",
+    "id": "NapocaLux",
+    "img": "/img/NapocaLux.png",
+    "name": "Napoca Lux"
+  },
+  {
+    "alcohol": 8.5,
+    "description": "Inghetata cu lapte si glazura alba cu alune",
+    "id": "NapocaWhite",
+    "img": "/img/NapocaWhite.png",
+    "name": "Napoca White"
+  },
+  {
+    "alcohol": 7.5,
+    "description": "Inghetata de vanilie cu ciocolata cu lapte si migdale",
+    "id": "MagnumAlmond",
+    "img": "/img/MagnumAlmond.png",
+    "name": "Magnum Almond"
+  },
+  {
+    "alcohol": 9.2,
+    "description": "Inghetata cu ciocolata si sos de cacao, cu sos de ciocolata neagra si bucatele de boabe de cacao.",
+    "id": "MagnumInfinityChocolate",
+    "img": "/img/MagnumInfinityChocolate.png",
+    "name": "Magnum Infinity Chocolate"
+  },
+  {
+    "alcohol": 11.3,
+    "description": "Inghetata cu vanilie si sos de caramel, invelita in ciocolata cu lapte si glazura exterioara aurie.",
+    "id": "MagnumGold",
+    "img": "/img/MagnumGold.png",
+    "name": "Magnum Gold"
+  },
+  {
+    "alcohol": 6.7,
+    "description": "Inghetata cu aroma de vanilie, in con de napolitana, cu glazura cu aroma de ciocolata si bucatele de alune",
+    "id": "CornettoClassic",
+    "img": "/img/CornettoClassic.png",
+    "name": "Cornetto Classic"
+  },
+  {
+    "alcohol": 8.0,
+    "description": "Inghetata cu aroma de vanilie, sos de ciocolata, glazura cu aroma de ciocolata si cereale acoperite cu ciocolata cu lapte.",
+    "id": "CornettoItaliano",
+    "img": "/img/CornettoItaliano.png",
+    "name": "Cornetto Italiano"
+  },
+  {
+    "alcohol": 10.5,
+    "description": "Inghetata cu ciocolata si aroma de vanilie, sos de cacao, con de napolitana, glazura cu aroma de ciocolata si bucatele de alune",
+    "id": "CornettoChoco",
+    "img": "/img/CornettoChoco.png",
+    "name": "Cornetto Choco"
+  },
+  {
+    "alcohol": 7,
+    "description": "Inghetata cu aroma de vanilie intre biscuiti de cacao",
+    "id": "BigMilkCookie",
+    "img": "/img/BigMilkCookie.png",
+    "name": "Big Milk Cookie"
+  },
+  {
+    "alcohol": 10.5,
+    "description": "Inghetata cu lapte si aroma de ciocolata, cu sos de ciocolata cu lapte si alune",
+    "id": "BigMilkNugatStick",
+    "img": "/img/BigMilkNugatStick.png",
+    "name": "Big Milk Nugat Stick"
+  }
+]

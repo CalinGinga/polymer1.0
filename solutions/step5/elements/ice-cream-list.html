@@ -1,0 +1,124 @@
+<!-- Our ice-cream-list will generate `ice-cream-list-item` elements, so we import it -->
+<link rel="import" href="ice-cream-list-item.html">
+
+<dom-module id="ice-cream-list">
+  <template>
+    <style>
+      /* CSS rules for your element */
+    </style>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <!--Sidebar content-->
+          <div>Search: <input value="{{filterText::input}}"></div>
+          <div>
+            Sort by:
+            <select value="{{criterium::change}}">
+              <template is="dom-repeat" items="{{criteria}}">
+                <option value="[[item.name]]">[[item.label]]</option>
+              </template>
+            </select>
+          </div>
+          <div>
+            <input type="checkbox" checked="{{descendingSort::change}}" name="sortingOrder"> Descending sort
+          </div>
+          <div>Number of results: {{currentIceCreams}}</div>
+        </div>
+        <div class="col-md-10">
+          <div class="iceCreams">
+            <template id="iceCreamList" is="dom-repeat" items="{{iceCreams}}" filter="iceCreamFilter" sort="iceCreamSorter">
+              <ice-cream-list-item name="{{item.name}}" description="{{item.description}}">
+              </ice-cream-list-item>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</dom-module>
+
+<script>
+  // element registration
+  Polymer({
+    is: "ice-cream-list",
+    // add properties and methods on the element's prototype
+    properties: {
+      iceCreams: {
+        type: Array,
+      },
+      currentIceCreams: {
+        type: String,
+        computed: "getCurrentIceCreams(iceCreams, filterText)"
+      },
+	  filterText: {
+        type: String,
+        observer: "criteriaChanged"
+      },
+      criterium: {
+        type: String,
+        observer: "criteriaChanged"
+      },
+      descendingSort: {
+        type: Boolean,
+        observer: "criteriaChanged",
+        value: false
+      }
+    },
+    ready: function() {
+      this.iceCreams = [
+        {
+          popularity: 8.5,
+          name: "Napoca Panda",
+          description: "Inghetata cu cacao si inghetata cu aroma de vanilie"
+        },
+        {
+          popularity: 9.2,
+          name: "Napoca Lux",
+          description: "Inghetata cu cacao si cu aroma de vanilie, cu glazura cu cacao si alune"
+        },
+        {
+          popularity: 7,
+          name: "Napoca White",
+          description: "Inghetata cu lapte si glazura alba cu alune"
+        },
+		{
+          popularity: 9,
+          name: "Magnum Almond",
+          description: "Inghetata de vanilie cu ciocolata cu lapte si migdale"
+        },
+		{
+          popularity: 8.7,
+          name: "Magnum Infinity Chocolate",
+          description: "Inghetata cu ciocolata si sos de cacao, cu sos de ciocolata neagra si bucatele de boabe de cacao."
+        }
+      ];
+    this.filterText = "";
+      this.criteria = [
+        { name: "name", label: "Alphabetical"},
+        { name: "popularity", label: "Popularity" }
+      ];
+      this.criterium = this.criteria[0].name;
+    },
+	criteriaChanged: function(newValue, oldValue) {
+      this.$.iceCreamList.render();
+    },
+    iceCreamFilter:  function(item) {
+        return item.name.match(new RegExp(this.filterText, 'i'));
+    },
+    getCurrentIceCreams: function() {
+      var current = 0;
+
+      for (var i in this.iceCreams) {
+        if (this.iceCreamFilter(this.iceCreams[i])) current++
+      }
+      return current;
+    },
+	iceCreamSorter: function(a, b) {
+      var invert = 1;
+      if (this.descendingSort) invert = -1;
+      if ( a[this.criterium] === b[this.criterium] ) return 0;
+      if ( a[this.criterium] < b[this.criterium] ) return -1*invert;
+      if ( a[this.criterium] > b[this.criterium] ) return 1*invert;
+    }
+  });
+</script>

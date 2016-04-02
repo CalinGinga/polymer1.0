@@ -1,0 +1,85 @@
+<!-- Our ice-cream-list will generate `ice-cream-list-item` elements, so we import it -->
+<link rel="import" href="ice-cream-list-item.html">
+
+<dom-module id="ice-cream-list">
+  <template>
+    <style>
+      /* CSS rules for your element */
+    </style>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <!--Sidebar content-->
+          <div>Search: <input value="{{filterText::input}}"></div>
+          <div>Current search: {{filterText}}</div>
+          <div>Number of results: {{currentIceCreams}}</div>
+        </div>
+        <div class="col-md-10">
+          <div class="iceCream">
+            <template id="iceCreamList" is="dom-repeat" items="{{iceCreams}}" filter="iceCreamFilter">
+              <ice-cream-list-item name="{{item.name}}" description="{{item.description}}">
+              </ice-cream-list-item>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</dom-module>
+
+<script>
+  // element registration
+  Polymer({
+    is: "ice-cream-list",
+    // add properties and methods on the element's prototype
+    properties: {
+      filterText: {
+        type: String,
+        observer: "filterTextChanged",
+        value: ""
+      },
+      iceCreams: {
+        type: Array,
+      },
+      currentIceCreams: {
+        type: String,
+        computed: "getCurrentIceCreams(iceCreams, filterText)"
+      }
+    },
+    ready: function() {
+      this.iceCreams = [
+        {
+          Popularity: 8.5,
+          name: "Napoca Panda",
+          description: "Inghetata cu cacao si inghetata cu aroma de vanilie"
+        },
+        {
+          Popularity: 9.2,
+          name: "Napoca Lux",
+          description: "Inghetata cu cacao si cu aroma de vanilie, cu glazura cu cacao si alune"
+        },
+        {
+          Popularity: 7,
+          name: "Napoca White",
+          description: "Inghetata cu lapte si glazura alba cu alune"
+        }
+      ];
+    },
+	filterTextChanged: function(newValue, oldValue) {
+      this.$.iceCreamList.render();
+    },
+    iceCreamFilter:  function(item) {
+        return item.name.match(new RegExp(this.filterText, 'i'));
+    },
+    getCurrentIceCreams: function() {
+      var current = 0;
+
+      for (var i in this.iceCreams) {
+        if (this.iceCreamFilter(this.iceCreams[i])) {
+          current++
+        }
+      }
+      return current;
+    }
+  });
+</script>

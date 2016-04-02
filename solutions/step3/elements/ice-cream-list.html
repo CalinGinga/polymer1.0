@@ -1,0 +1,61 @@
+<!-- Our ice-cream-list will generate `ice-cream-item` elements, so we import it -->
+<link rel="import" href="ice-cream-list-item.html">
+
+<dom-module id="ice-cream-list">
+  <template>
+    <style>
+      .cell {
+        padding: 5px;
+        border: 1px black solid;
+      }
+    </style>
+    <div class="iceCream">
+      <template is="dom-repeat" items="{{iceCreams}}">
+        <ice-cream-list-item name="{{item.name}}" description="{{item.description}}">
+        </ice-cream-list-item>
+      </template>
+    </div>
+    <table>
+  <tr><th colspan='8'>Row number</th></tr>
+  <template
+    is="dom-repeat" items="[0, 1, 2, 3, 4, 5, 6, 7]" as="lines">
+    <tr>
+       <template
+        is="dom-repeat"
+        items='["a","b","c","d","e","f"]' as="columns">
+          <td class="cell">{{lines}} - {{columns}}</td>
+        </template>
+      </tr>
+    </template>
+  </table>
+  </template>
+</dom-module>
+
+<script>
+  // element registration
+  Polymer({
+    is: "ice-cream-list",
+    // add properties and methods on the element's prototype
+    properties: {
+    },
+    ready: function() {
+      this.iceCreams = [
+        {
+          Popularity: 8.5,
+          name: "Napoca Panda",
+          description: "Inghetata cu cacao si inghetata cu aroma de vanilie"
+        },
+        {
+          Popularity: 9.2,
+          name: "Napoca Lux",
+          description: "Inghetata cu cacao si cu aroma de vanilie, cu glazura cu cacao si alune"
+        },
+        {
+          Popularity: 7,
+          name: "Napoca White",
+          description: "Inghetata cu lapte si glazura alba cu alune"
+        }
+      ];
+    }
+  });
+</script>
