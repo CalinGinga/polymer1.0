@@ -26,8 +26,10 @@ In the *index.html* file replace the HTML list with two ice cream items.
 
 ## Step 3
 In the elements folder create a new html file named *ice-cream-list.html* containing a template for the list.  
-In the script section define the list and create the _iceCreams_ object which will have popularity, name and description. Also we will add a new ice cream:
+In the script section define the list and create the _iceCreams_ object which will have popularity, name and description. Also we will add more ice creams:
 * name = Napoca White / description = Inghetata cu lapte si glazura alba cu alune
+* name = Magnum Almond / description = Inghetata de vanilie cu ciocolata cu lapte si migdale
+* name = Magnum Infinity Chocolate / description = Inghetata cu ciocolata si sos de cacao, cu sos de ciocolata neagra si bucatele de boabe de cacao.
 
 Replace the ice cream items from the index.html file with the new ice cream list.
 

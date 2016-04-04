@@ -1,9 +1,6 @@
 <!-- Our ice-cream-list will generate `ice-cream-list-item` elements, so we import it -->
 <link rel="import" href="ice-cream-list-item.html">
 
-<!-- Import iron-ajax to get the list of ice creams from the server -->
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
-
 <dom-module id="ice-cream-list">
   <template>
     <style>
@@ -29,24 +26,14 @@
         </div>
         <div class="col-md-10">
           <div class="iceCreams">
-			<template id="iceCreamList" is="dom-repeat" items="{{iceCreams}}" filter="iceCreamFilter" sort="iceCreamSorter">
-              <ice-cream-list-item id="{{item.id}}" name="{{item.name}}" description="{{item.description}}"
-                img="{{item.img}}" popularity="{{item.popularity}}">
+            <template id="iceCreamList" is="dom-repeat" items="{{iceCreams}}" filter="iceCreamFilter" sort="iceCreamSorter">
+              <ice-cream-list-item name="{{item.name}}" description="{{item.description}}">
               </ice-cream-list-item>
             </template>
           </div>
         </div>
       </div>
     </div>
-	<iron-ajax
-	  auto
-      url="../iceCreams/iceCreams.json"
-      method='get'
-      params='{}'
-      handle-as="json"
-      on-response="gotIceCreams"
-      on-error="gotError"
-      debounce-duration="300"></iron-ajax>
   </template>
 </dom-module>
 
@@ -78,13 +65,39 @@
       }
     },
     ready: function() {
-		this.iceCreams = [];
-		this.filterText = "";
-		this.criteria = [
-			{ name: "name", label: "Alphabetical"},
-			{ name: "popularity", label: "Popularity" }
-		];
-		this.criterium = this.criteria[0].name;
+      this.iceCreams = [
+        {
+          popularity: 8.5,
+          name: "Napoca Panda",
+          description: "Inghetata cu cacao si inghetata cu aroma de vanilie"
+        },
+        {
+          popularity: 9.2,
+          name: "Napoca Lux",
+          description: "Inghetata cu cacao si cu aroma de vanilie, cu glazura cu cacao si alune"
+        },
+        {
+          popularity: 7,
+          name: "Napoca White",
+          description: "Inghetata cu lapte si glazura alba cu alune"
+        },
+		{
+          popularity: 9,
+          name: "Magnum Almond",
+          description: "Inghetata de vanilie cu ciocolata cu lapte si migdale"
+        },
+		{
+          popularity: 8.7,
+          name: "Magnum Infinity Chocolate",
+          description: "Inghetata cu ciocolata si sos de cacao, cu sos de ciocolata neagra si bucatele de boabe de cacao."
+        }
+      ];
+    this.filterText = "";
+      this.criteria = [
+        { name: "name", label: "Alphabetical"},
+        { name: "popularity", label: "Popularity" }
+      ];
+      this.criterium = this.criteria[0].name;
     },
 	criteriaChanged: function(newValue, oldValue) {
       this.$.iceCreamList.render();
@@ -106,12 +119,6 @@
       if ( a[this.criterium] === b[this.criterium] ) return 0;
       if ( a[this.criterium] < b[this.criterium] ) return -1*invert;
       if ( a[this.criterium] > b[this.criterium] ) return 1*invert;
-    },
-	gotIceCreams: function(event, ironRequest) {
-      this.iceCreams = ironRequest.response;
-    },
-    gotError: function(event, ironRequest){
-      this.error = event;
     }
   });
 </script>

@@ -12,11 +12,9 @@
         min-height: 50px;
       }
     </style>
-	<div id="{{id}}" class="beer clearfix">
-      <img class="pull-right el-img" src="{{img}}">
-      <h2 class="el-name">{{name}}</h2>
-      <p class="el-description">{{description}}</p>
-      <p class="pull-right el-alcohol">Popularity: {{popularity}}</p>
+    <div class="iceCream">
+      <h2>{{name}}</h2>
+      <p>{{description}}</p>
     </div>
   </template>
 </dom-module>
@@ -26,11 +24,8 @@ Polymer({
   is: 'ice-cream-list-item',
 
   properties: {
-    id: String,
     name: String,
-    description: String,
-    img: String,
-    popularity: String
+    description: String
   }
 })
 </script>
