@@ -18,7 +18,7 @@ Inside the index.html file create a simple HTML list with each list item contain
 
 After the list create a paragraph with the a hardcoded total number of ice creams.
 
-## Step 2
+## Step 2 
 Create an elements folder and inside the folder create your first web component file called *ice-cream-list-item.html*. Inside the file create a template for an iceCream element. You will need a *div* containing a *header* element for the name and a *paragraph* element for the description.  
 After the template create a script containing the definition of the Polymer web component.  
 Add some styling to the template.  
